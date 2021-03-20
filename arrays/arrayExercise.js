@@ -7,7 +7,7 @@ console.log(months[4], months[8], months[0]);
 //2. Write an arrays of days in a week. Using console.log display Sunday from the array.
 
 var daysOfWeek= ["Monday", "Thuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-console.log(daysOfWeek[6]); //ili console.log(day[day.length - 1]);
+console.log(daysOfWeek[6]); //ili console.log(daysOfWeek[daysOfWeek.length - 1]);
 
 //3. Print all negative elements from the array [2, -4, 5, -2, -11].
 

@@ -69,6 +69,28 @@ console.log(sum);
 //7. Write a program that computes average marks of the following students. Then use this
 //average to determine the corresponding grade.
 
+var students = [['David', 80], ['Marko', 77], ['Dany', 88], ['John',95], ['Thomas', 68]];
+var avgmark = 0;
+
+for (var i = 0; i < students.length; i++) {
+    avgmark = avgmark + students[i][1]; //sabrace mi sve ocene svih studenata, da bih dobila prosecnu ocenu, moram da to podelim sa brojem studenata, a to je 5
+    var avggrade = (avgmark/students.length);
+}
+
+console.log('Average grade is ' + avggrade);
+
+    if (avggrade < 60) {
+        console.log('Grade is F');
+    } else if (avggrade < 70) {
+        console.log('Grade is D');
+    } else if (avggrade < 80) {
+        console.log('Grade is C');
+    } else if (avggrade < 90) {
+        console.log('Grade is B');
+    } else if (avggrade < 100) {
+        console.log('Grade is A');
+    }
+ 
 
 
 
@@ -93,7 +115,13 @@ for (var i = 0; i <=100; i++) {
     
 } 
 
-
-
+//primer sa prezentacije
+var res='\n';
+for (var i = 0; i < 5; i++) {
+    for (var j = 0; j < 5; j++) {
+        res = res + '*\t';
+    }
+}
+console.log(res);
 
 
