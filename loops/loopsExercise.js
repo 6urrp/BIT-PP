@@ -8,7 +8,7 @@ for (var x = 0; x <= 10; x++) {
 //number is odd or even, and display a message to the screen.
 
 for (var i = 0; i <= 15; i++) {
-    if (i%2==0 ) {
+    if (i%2===0 ) {
         console.log(i + ' is even number');
     } else {
         console.log(i + ' is odd number');
@@ -19,7 +19,7 @@ for (var i = 0; i <= 15; i++) {
 
 var sum = 0;
 for (var i = 0; i < 1000; i++) {
-    if (i%3==0 || i%5==0) {
+    if (i%3==0 && i%5==0) {  // sa 3 i 5 ili sa 3 ili 5
         sum = sum + i;
     }
 }
@@ -52,10 +52,12 @@ console.log(single);
 var a = [[1, 2, 1, 24],[8, 11, 9, 4],[7, 0, 7, 27]];
 
 for (var i = 0; i < a.length; i++ ) {
-    for (var x = 0; x < a[i].length; x++) {
-        console.log(a[i][x]);
+    for (var j = 0; j < a[i].length; j++) {
+        console.log(a[i][j]);
     }
 }
+
+
 
 //6. Write a program that outputs the sum of squares of the first 20 numbers.
 
@@ -112,8 +114,8 @@ for (var i = 0; i <=100; i++) {
     } else {
         console.log(i);
     }
-    
 } 
+
 
 //primer sa prezentacije
 var res='\n';
