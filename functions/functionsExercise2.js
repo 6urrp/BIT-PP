@@ -208,3 +208,105 @@ function firstCharactersAdd (string, numb) {
 }
 
 console.log(firstCharactersAdd("petar", 2));
+
+
+
+
+
+
+
+
+/*11. Write a function that converts an array of strings into an array of numbers. Filter out all
+non-numeric values.
+["1", "21", undefined, "42", "1e+3", Infinity] -> [1, 21, 42, 1000] */
+
+
+function arrayOfStringsInNumb (array) {
+    var newArr = [];
+    for (var i = 0; i < array.length; i++) {
+        var numb = isFinite(array[i]);
+        if (numb) {
+            newArr[newArr.length] = parseFloat(array[i]); //zasto ovde array[i] a ne numb[i]??
+        }
+    }
+    return newArr;
+}
+
+var a = ["1", "21", undefined, "42", "1e+3", Infinity];
+
+console.log(arrayOfStringsInNumb(a));
+
+
+//12. Write a function to calculate how many years there are left until retirement based on the
+//year of birth. Retirement for men is at age of 65 and for women at age of 60. If someone is
+//already retired, a proper message should be displayed.
+
+
+function untilRetirement (birthyear, sex) {
+    var currentYear = 2021;
+    var retirementYear;
+    var tillRetirement;
+    if (sex === 'male') {
+        retirementYear = 65;
+    } else if (sex === 'female') {
+        retirementYear = 60;
+    }
+
+    tillRetirement = currentYear - birthyear;   //    till = 2021 - 1970 = 51
+ 
+    if (retirementYear >= tillRetirement) {
+        tillRetirement = retirementYear - tillRetirement;
+        tillRetirement += " years till retirement";
+    } else {
+        tillRetirement = 'Already retired';
+    }
+
+    return tillRetirement;
+}
+
+var a = 1990;
+var b = "male";
+console.log(untilRetirement(a, b));
+
+//13. Write a function to humanize a number (formats a number to a human-readable string) with
+//the correct suffix such as 1st, 2nd, 3rd or 4th.
+//1 -> 1st
+//11 -> 11th
+
+function humanizeNumber (number) {
+    var numberString = number + "";
+    var result;
+    if (numberString[numberString.length-1] === 1 && numberString !== 11 ) {
+        result = numberString + 'st';
+    } else if (numberString[numberString.length-1] === 2 && numberString !== 12) {
+        result = numberString + 'nd';
+    } else if (numberString[numberString.length-1] === 3 && numberString !== 13) {
+        result = numberString + 'rd';
+    } else {
+        result = numberString + 'th';
+    }
+    return result;
+}
+
+var a = 21;
+console.log(humanizeNumber(a));
+
+
+//drugi nacin sa %
+
+function humanizeNumber (number) {
+    var result;
+    if (number % 10 === 1 && number !== 11) {
+        result = number + 'st';
+    } else if (number % 10 === 2 && number !==12 ) {
+        result = number + 'nd';
+    } else if (number % 10 === 3 && number !==13 ) {
+        result = number + 'rd';
+    } else {
+        result = number + 'th';
+    }
+    return result;
+}
+
+var a = 11;
+console.log(humanizeNumber(a));
