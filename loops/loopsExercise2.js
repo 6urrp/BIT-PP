@@ -149,7 +149,7 @@ for (var i = 0; i < array1.length; i++) {
 }
 
 for (var i = 0; i < array2.length; i++) {
-    newArray[newArray.length] = array2[i]; // zasto je ovde newArray.length ??
+    newArray[newArray.length] = array2[i]; 
 }
 console.log(newArray);
 
