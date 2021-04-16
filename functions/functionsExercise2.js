@@ -95,7 +95,7 @@ function firstCharacterOccurrence (string, char) {
 }
 
 var a = "sandra";
-var char = "a";
+var char = "o";
 console.log(firstCharacterOccurrence(a, char));
 
 
@@ -130,7 +130,7 @@ console.log(lastCharacterOccurrence(a, char));
 
 
 function stringIntoArray (string) {
-    result = [];
+    var result = [];
     for (var i = 0; i < string.length; i++) {
         if (string[i] != " ") {
             result[result.length] = string[i];
@@ -150,20 +150,6 @@ not.
 Note: A prime number (or a prime) is a natural number greater than 1 that has no positive
 divisors other than 1 and itself.*/
 
-
-function isPrime (numb) {
-    if (numb <= 1) {
-        return false;
-    } 
-    for (var i = 2; i < numb; i++) {
-        if (numb % i === 0) {   
-            return false;
-        } else {
-            return true;
-        }
-    }
-}
-console.log(isPrime(97));
 
 
 /*9. Write a function that replaces spaces in a string with provided separator. If separator is not
@@ -207,12 +193,7 @@ function firstCharactersAdd (string, numb) {
     return result;
 }
 
-console.log(firstCharactersAdd("petar", 2));
-
-
-
-
-
+console.log(firstCharactersAdd("petar", 3)); // ISPRAVI
 
 
 

@@ -5,7 +5,7 @@
 
 var a = "My random string";
 var add = "JS ";
-var numb = 1;  // numb - 1 = index?? 
+var numb = 10;  // numb - 1 = index?? 
 var result= " ";
 function stringWithinAString (a, add, numb) {
     numb = numb || 1;
@@ -120,11 +120,6 @@ console.log(reversesNumber(a));
 console.log(5 % 10);
 
 
-
-
-
-
-
 //5. Write a function to get the last element of an array. Passing a parameter "n" will return the
 //last "n" elements of the array.
 //[7, 9, 0, -2] -> -2
@@ -199,8 +194,6 @@ console.log(perfectNumber(numb));
 
 
 
-
-
 /*8. Write a function to find a word within a string.
 "The quick brown fox", "fox" -> "'fox' was found 1 times"
 "aa bb cc dd aa", "aa" -> "'aa'" was found 2 times" */
@@ -229,7 +222,6 @@ function wordWithinString (string, word) {
 }
 
 console.log(wordWithinString(myString, word));
-
 
 
 //9. Write a function to hide email address.

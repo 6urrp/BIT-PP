@@ -42,7 +42,7 @@ Output: “015false-2247” */
 var array = [NaN, 0, 15, false, -22, "", undefined, 47, null];
 var result = "";
 for (var i = 0; i < array.length; i++) {
-    if (!isNaN(array[i]) && array[i] != null) {
+    if (i(array[i]) && array[i] != null) {
         result += array[i];
     }
 }
@@ -102,7 +102,7 @@ console.log(integerValuesInArray(a));
 Input: [NaN, 23.1, 15, false, -22.5, "", 4, 7, null]
 Output: 2 */
 
-var array = [NaN, 23.1, 15, false, -22.5, "", 4, 7, null, 7.1];
+var array = [NaN, 23.1, 15, false, -22.5, "", 4, 7, null];
 function floatValues (array) {
     var counter = 0;
     for (var i = 0; i < array.length; i++) {
@@ -113,6 +113,7 @@ function floatValues (array) {
         }
         
     }
+
     return counter;
 }
 
