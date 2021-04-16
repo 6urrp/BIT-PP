@@ -150,6 +150,29 @@ not.
 Note: A prime number (or a prime) is a natural number greater than 1 that has no positive
 divisors other than 1 and itself.*/
 
+var prime = 84;
+function isPrime (prime){
+    var result = "";
+    if (prime === 2) {
+        result = "Number is prime";  //dvojka je izuzetak od parnih brojeva i zato posebno stavljamo uslov za nju
+    }
+    if (prime % 2 === 0) {
+        result = "Number is not a prime";  //prime brojevi nisu nikad parni (osim broja 2)
+    } else {
+        for (var i = 2; i < prime; i++) {  // sto znaci da ce ovde za sve neparne brojeve otvoriti petlju koja obuhvata sve brojeve koji nisu 1, i koji nisu broj koji mi imamo
+            if (prime % i === 0) {  //tako da ako taj broj delimo sa i i on bude nula, to nije prime broj, jer nama treba broj deljiv samo sa 1 sa sa samim sobom
+               result = "Number is not a prime";
+               break; // imamo break, jer cim je deljiv sa drugim brojem i nema ostatak, onda nije prime
+            } else { 
+                result = "number is prime"; // sto znaci da su ostali svi prime, oni koji su nam potrebni
+            }
+        }
+    } 
+    return result;
+}
+
+console.log(isPrime(prime));
+
 
 
 /*9. Write a function that replaces spaces in a string with provided separator. If separator is not
