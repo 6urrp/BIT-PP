@@ -138,6 +138,7 @@ console.log(maxAndMin($random));
 //9. Write a function to find the median element of array.
 
 
+
 //10. Write a function to find the element that occurs most frequently.
 
 var $array = [1, 2, "some", null, 2, "some", true, Infinity, "some", true, true, true] 
@@ -166,6 +167,29 @@ console.log(theMostFrequent($array));
 
 /*11. Write a function to find and return the first, middle and last element of an array if the array has odd number of elements. If number of elements is even, return just the first and the last. In other cases (empty array), input array should be returned.*/ 
 
-var oddArray = [1, true, Infinity, "strawberry"];
-var evenArray = [];
-var emptyArray = []; 
+var oddArray = [1, true, Infinity, "strawberry", false];
+var evenArray = [2, false, "future", Infinity];
+var emptyArray = [];
+
+
+function returnElement (array) {
+    var newArr = [];
+    if(array.length === 0 ) {
+        newArr = array;
+    }
+    for (var i = 0; i < array.length; i++){
+        if (array.length % 2 === 0) {
+            newArr[newArr.length] = array[0];
+            newArr[newArr.length] = array[array.length-1];
+        } else {
+            newArr[newArr.length] = array[0];
+            newArr[newArr.length] = array[((array.length-1)/2)]; //ide -1 pa podeljeno sa 2, zato sto nam ova duzina niza oznacava index
+            newArr[newArr.length] = array[array.length-1];
+        }
+        return newArr;
+    }
+}
+
+console.log(returnElement(emptyArray));
+
+
