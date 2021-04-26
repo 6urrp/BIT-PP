@@ -83,13 +83,11 @@ Input: 034
 Output: 28*/
 
 
-034
+
 (function (octal) {
     var decimal = parseInt(octal, 10);
     console.log(decimal);
 })(034);
-
-
 
 
 
@@ -106,10 +104,43 @@ Output: Your password is cool!*/
 
 
 
+function successCallback (password) {
+    var result;
+    for (var i = 0; i < password.length; i++) {
+        if (password.length >= 6 && !isNaN(password[i])) { //NACIN DA PROVERIM DA LI MI JE NEKI ELEMENT STRINGA BROJ
+            result = "Your password is cool!"
+        }
+    }
+    return true;
+}
 
 
+    
+function errorCallback (password) {
+    if (password.length < 6) {
+        return true;
+    } 
+    var p = 0;
+    for (var i = 0; i < password.length; i++) {
+        if (!isNaN(password[i])) {
+                p++;
+        }
+    }
+    if (p === 0) {
+        return true;
+    }
+}
 
-
+(function isValid (pass) {
+    if (errorCallback(pass)) {
+        console.log("Your password is invalid!");
+    } else if (successCallback(pass)) {
+        console.log("Your password is cool!");
+    }
+    else {
+        console.log("Please type in your password")  //ako nemam nista od inputa ovo ce biti
+    }
+})("jsgu");
 
 
 
@@ -117,3 +148,19 @@ Output: Your password is cool!*/
 given by the callback function.
 Input: [2, 8, 11, 4, 9, 3], callback function checks if the number is odd
 Output: [11, 9, 3]*/
+
+function isOdd (array) {
+    var newArray = [];
+    for (var i = 0; i < array.length; i++) {
+        if (array[i] % 2 !== 0) {
+            newArray[newArray.length] = array[i];
+        }
+    }
+    return newArray;
+}
+
+var output = (function (array) {
+    return isOdd(array);
+})([2, 8, 11, 4, 9, 3]);
+
+console.log(output);

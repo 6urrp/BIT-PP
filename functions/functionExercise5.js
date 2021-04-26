@@ -186,3 +186,16 @@ console.log(reversedString(myString));
 Don't display two of the same numbers at the same time. Display the number of possible
 combinations, as well. (E.g. (1.2),(2,1) is allowed, but not (1,1), (2,2)...).*/
 
+function combinationOfNumbers () {
+    for (var i = 1; i <= 7; i++) { 
+        for (var j = 1; j <= 7; j++) {
+            if (i !== j){
+                console.log(i, j);
+            } 
+        }
+    }
+}
+(combinationOfNumbers());
+
+
+
