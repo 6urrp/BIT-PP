@@ -23,6 +23,23 @@ console.log(elementInArray(array, e));
 //Input: e = 3, a = [5, -4.2, 18, 7]
 //Output: no
 
+var a = [5, -4.2, 18, 7];
+var element = 3;
+
+function inArray(array, element ) {
+    var result = ""
+    for (var i = 0; i < array.length; i++) {
+        if (array[i] === element) {
+            result = "yes";
+            break;
+        } else {
+            result = "no";
+        }
+    }
+    return result;
+}
+var output = inArray(a, element);
+console.log(output);
 
 //2. Write a program that multiplies every positive element of a given array by 2.
 //Input array: [-3, 11, 5, 3.4, -8]

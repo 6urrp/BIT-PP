@@ -99,18 +99,61 @@ function correspondingGrade (students, points) {
 console.log(correspondingGrade(students, points));
 
 /*4. (skip :))Sort a previously defined array. Place its sorted values into a new array whose
-values are equivalent to the first array&#39;s values multiplied by 2.
+values are equivalent to the first array's values multiplied by 2.
 Input: [ 13, 11, 15, 5, 6, 1, 8, 12 ]
 Output: [ 2, 10, 12, 16, 22, 24, 26, 30 ]*/
 
 
+var array = [13, 11, 15, 5, 6, 1, 8, 12];
+function sortArray (array) {
+    var result = [];
+    for (var i = 0; i < array.length; i++) {
+        for (var j = 0; j < array.length; j++) {
+            var element = array[j];
+            var next = array[j+1];
 
+            if (element > next) { //uporedjujem da li mi je prvi veci od sledeceg
+                array[j] = next; //ako jeste, moj prvi dobija vrednost tog drugog koji je manji
+                array[j+1] = element; //a drugi dobija vrednost prvog, odnosno veceg
+            }
+            
+        }
+        
+    }
+    for (var k = 0; k < array.length; k++) {
+        result[result.length] = array[k] * 2;
+    }
+    return result;
+}
+ 
+var output = sortArray(array);
+console.log(output);
 
 
 /*5. (skip :))Sort a previously defined array in a descending order and display it in the
 console.
 Input: [ 13, 11, 15, 5, 6, 1, 8, 12 ]
 Output: [ 15, 13, 12, 11, 8, 6, 5, 1 ]*/
+
+var $myArray = [ 13, 11, 15, 5, 6, 1, 8, 12 ];
+
+function descendingOrder (array) { 
+    for (var i = 0; i < array.length; i++) {
+        for (var j = 0; j < array.length; j++) {
+            var element = array[j];
+            var next = array[j+1];
+
+            if (element < next) {
+                array[j] = next;
+                array[j+1] = element;
+            }
+        }
+    }
+    return array;
+}
+
+var output = descendingOrder($myArray);
+console.log(output);
 
 
 
@@ -196,6 +239,82 @@ function combinationOfNumbers () {
     }
 }
 (combinationOfNumbers());
+
+
+
+/* 10. Write a program that checks if the entered number is a prime number (i.e. divisible only
+by 1 and by itself).
+Input: 17 | 15
+Output: true | false*/
+
+var inputNumber = 17;
+
+function isPrime(number) {
+    if (number % 2 === 0) {
+        return false;
+    }
+    for (var i = 2; i < number; i++) { //krecem od dva jer je svaki broj deljiv sa 1. Trazim broj koji nije deljiv ni sa jednim brojem izmedju
+        if (number % i === 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+}
+
+var output = isPrime(inputNumber);
+console.log(output);
+
+
+/*11. Check if a given string is a palindrome (spaces are ignored).
+Input: eye | Geek | a nut for a jar of tuna
+Output: true | false | true*/
+
+var $myRandomString = "a nut for a jar of tuna";
+
+function isPalindrome (string) {
+    var result
+    for (var i = 0, j = string.length-1; i < j; i++, j--) {
+        if (string[i] === " "){
+            string[i] = string[i+1];
+            i++;
+        }
+        if (string[j] === " ") {
+            string[j] = string[j-1];
+            j--;
+        }
+        if (string[i] !== string[j]) {
+            return false;
+        }
+    }
+    return true;
+}
+var output = isPalindrome($myRandomString);
+console.log(output);
+
+
+/*12. Write a program that calculates the greatest common divisor of two integers. Note: The
+greatest common divisor of two non-zero integers is the greatest positive number that
+divides both numbers with no remainder.
+Input: 192 42 | 81 9
+Output: 6 | 9*/
+
+function commonDivisor (numb1, numb2) {
+    var divisor = 0;
+    var min = numb1;
+    if (numb2 < min) {
+        min = numb2;
+    }
+    for (var i = min; i > 0; i--) {
+        if (numb1 % i === 0 && numb2 % i === 0) {
+            divisor = i;
+            break;
+        }
+    }
+    return divisor;
+}
+var output = commonDivisor(192, 42);
+console.log(output);
 
 
 
