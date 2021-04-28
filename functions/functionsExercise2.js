@@ -246,31 +246,35 @@ console.log(arrayOfStringsInNumb(a));
 //already retired, a proper message should be displayed.
 
 
-function untilRetirement (birthyear, sex) {
-    var currentYear = 2021;
+function untilRetirement (year, birthyear, sex) {
+    var currentAge = year - birthyear; //2021 - 1995 = 26;
     var retirementYear;
-    var tillRetirement;
-    if (sex === 'male') {
-        retirementYear = 65;
-    } else if (sex === 'female') {
+    var yearsLeft;
+    var output = "";
+    if (sex !== "male" && sex !== "female") {
+        return output += "Your sex shoud be in form male of female";
+    }
+
+    if (sex === "male") {
+        retirementYear = 65;  
+    } else if (sex === "female") {
         retirementYear = 60;
-    }
+    } 
 
-    tillRetirement = currentYear - birthyear;   //    till = 2021 - 1970 = 51
- 
-    if (retirementYear >= tillRetirement) {
-        tillRetirement = retirementYear - tillRetirement;
-        tillRetirement += " years till retirement";
+    if (currentAge <= retirementYear) {
+        yearsLeft = retirementYear - currentAge;
+        return output += yearsLeft + " years till retirement"
     } else {
-        tillRetirement = 'Already retired';
+        return output += "Already retired";
     }
-
-    return tillRetirement;
 }
 
-var a = 1990;
-var b = "male";
-console.log(untilRetirement(a, b));
+var year = 2021;
+var a = 1995;
+var b = "female";
+
+var result = (untilRetirement(year, a, b));
+console.log(result);
 
 //13. Write a function to humanize a number (formats a number to a human-readable string) with
 //the correct suffix such as 1st, 2nd, 3rd or 4th.
@@ -312,5 +316,29 @@ function humanizeNumber (number) {
     return result;
 }
 
-var a = 11;
+var a = 2;
 console.log(humanizeNumber(a));
+
+
+//with switch 
+
+function humanize(number) {
+    var result;
+    switch (true) {
+        case number % 10 === 1 && number !== 11:
+            result = number + 'st';
+            break;
+        case number % 10 === 2 && number !== 12:
+            result = number + "nd";
+            break;
+        case number % 10 === 3 && number !== 13:
+            result = number + "rd";
+        default:
+            result = number + "th";
+            break;
+    }
+    return result;
+}
+
+var output = humanize(11);
+console.log(output);

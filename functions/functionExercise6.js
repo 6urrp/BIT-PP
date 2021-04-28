@@ -338,5 +338,27 @@ printed as:
 * frame *
 *********        */
 
+var rectangularArray = ["Hello", "World", "in", "a", "frame"];
 
+function rectangularFrame (array) {
+    //prvi i poslednji red zvezdica
+    var topBottomStars = "";
+    var max;
+    //treba da nadjem duzinu, od najduze reci u nizu pa plus 4
+    for (var i = 0; i < array.length; i++) {
+            var max = array[0].length;
+        if (array[i].length > max) {
+            max = array[i].length;
+        }
+    }
+    var lengthINeed = max + 4;
 
+    for (var j = 0; j < lengthINeed; j++) {
+        topBottomStars += "*"; // MORA BITI PRAZAN STRING UKOLIKO JA DODAJEM NEKU VREDNOST
+    }
+    return(topBottomStars);
+    
+}
+
+var output = rectangularFrame(rectangularArray);
+console.log(output);
