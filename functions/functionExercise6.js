@@ -353,10 +353,24 @@ function rectangularFrame (array) {
     }
     var lengthINeed = max + 4;
 
-    for (var j = 0; j < lengthINeed; j++) {
-        topBottomStars += "*"; // MORA BITI PRAZAN STRING UKOLIKO JA DODAJEM NEKU VREDNOST
+    //for (var j = 0; j < lengthINeed; j++) {
+    //    topBottomStars += "*"; // MORA BITI PRAZAN STRING UKOLIKO JA DODAJEM NEKU VREDNOST
+    //}
+
+
+    function fillTheSpace (lengthOFString, char) {
+        var fillSpace = "";
+        for (var j = 0; j < lengthOFString; j++) {
+            fillSpace += char;
+        }
     }
-    return(topBottomStars);
+
+    //middle part 
+    for (var k = 0; k < array.length; k++) {
+        var middlePart = "";
+
+    }
+
     
 }
 
