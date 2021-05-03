@@ -185,8 +185,36 @@ Input: [‘apple’, ‘tea’, ‘amazing’, ‘morning’, ‘JavaScript’]
 Output: [‘morning’, ‘apple’, ‘tea’, ‘JavaScript’, ‘amazing’] */
 
 function sortByAppearance (array) {
-    
+    var temp;
+
+    function countA (str){
+        var counter = 0;
+        for (var k = 0; k < str.length; k++) {
+          if (str[k] === "A" || str[k] === "a") {
+            counter++;
+          }
+        }
+        return counter;
+    }
+
+    for (var i = 0; i < array.length; i++) {
+      var min = array[i];
+      var minIndex = i;
+      for (var j = i; j < array.length; j++) {
+        var element = array[j];
+        if(countA(element) < countA(min)){
+          min = array[j];
+          minIndex = j;
+        }
+      }
+      
+      temp = array[i];
+      array[i] = min;
+      array[minIndex] = temp;
+    }
+    return array;
 }
+
 var array = ["apple", "tea", "amazing", "morning", "JavaScript"];
 var output = sortByAppearance(array);
 console.log(output);
