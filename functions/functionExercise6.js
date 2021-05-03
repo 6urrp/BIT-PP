@@ -342,8 +342,18 @@ var rectangularArray = ["Hello", "World", "in", "a", "frame"];
 
 function rectangularFrame (array) {
     //prvi i poslednji red zvezdica
-    var topBottomStars = "";
     var max;
+    var allTogether = "";
+    var topAndBottom;
+    var middlePart = "";
+    function fillTheSpace (lengthOFString, char) {
+        var fillSpace = "";
+        for (var j = 0; j < lengthOFString; j++) {
+            fillSpace += char;
+        }
+        return fillSpace;
+    }
+    
     //treba da nadjem duzinu, od najduze reci u nizu pa plus 4
     for (var i = 0; i < array.length; i++) {
             var max = array[0].length;
@@ -352,25 +362,20 @@ function rectangularFrame (array) {
         }
     }
     var lengthINeed = max + 4;
-
-    //for (var j = 0; j < lengthINeed; j++) {
-    //    topBottomStars += "*"; // MORA BITI PRAZAN STRING UKOLIKO JA DODAJEM NEKU VREDNOST
-    //}
-
-
-    function fillTheSpace (lengthOFString, char) {
-        var fillSpace = "";
-        for (var j = 0; j < lengthOFString; j++) {
-            fillSpace += char;
-        }
-    }
-
+    topAndBottom = fillTheSpace(lengthINeed, "*");
+    
+    
     //middle part 
     for (var k = 0; k < array.length; k++) {
-        var middlePart = "";
-
+        var spacesAfter = max - array[k].length;
+        var spaces = fillTheSpace(spacesAfter, " ");
+        middlePart += "* " + array[k] + spaces + " *" + "\n";
     }
+    
+    //kocka
+    allTogether = topAndBottom + "\n" + middlePart + topAndBottom;
 
+    return allTogether;
     
 }
 

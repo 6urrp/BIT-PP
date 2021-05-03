@@ -184,3 +184,44 @@ console.log(output);
 Input: [‘apple’, ‘tea’, ‘amazing’, ‘morning’, ‘JavaScript’]
 Output: [‘morning’, ‘apple’, ‘tea’, ‘JavaScript’, ‘amazing’] */
 
+function sortByAppearance (array) {
+    
+}
+var array = ["apple", "tea", "amazing", "morning", "JavaScript"];
+var output = sortByAppearance(array);
+console.log(output);
+
+
+/*10. Write a function that prints out the date of the next day.
+Output: 25. 10. 2018.*/
+
+function theNextDay () {
+
+}
+
+/*11. Write a function that prints out the date of the previous day.
+Output: 23. 10. 2018. */
+
+function thePreviousDay () {
+
+}
+
+/* 12. Write a function that prints out an array of the numbers aligned from the right side.
+Input: [78, 111, 4, 4321]
+Output:
+78
+111
+4
+4321*/
+
+function arrayOfNumbers (array) {
+    var result = 0;
+    for (var i = 0; i < array.length; i++) {
+        result = (result + array[i])  + "\n";
+    }
+    return result;
+}
+
+var array= [78, 111, 4, 4321];
+var output = arrayOfNumbers(array);
+console.log(output);
