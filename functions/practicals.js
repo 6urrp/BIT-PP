@@ -29,8 +29,7 @@ function replaceString (string) {
     var newString = "";
     for (var i = 0; i < string.length; i++) {
         if (string[i] === "J" && string[i+1] === "S") {
-            newString += "*";
-            newString += "*";
+            newString += "**";
             i++;
         } else {
             newString += string[i];
@@ -73,11 +72,9 @@ Output: “Good morning!” */
 function deletesCharacter (string, position) {
     var newString = "";
     for (var i = 0; i < string.length; i++) {
-        if (i === position) {
-            newString += ""; //DA LI OVO MOZE OVAKO ILI POSTOJI DRUGI NACIN DA IZOSTAVIM TAJ STRING[I]?!
-        } else {
+        if (i !== position) {
             newString += string[i];
-        }
+        } 
     }
     return newString;
 }
@@ -130,3 +127,60 @@ Input: {x: 20, y: 30}, “z”, 20
 Output: false
 Input: {x: 20, y: 30}, “x”, 10
 Output: false */
+
+var myObject = { 
+    x: 20,
+    y: 30
+};
+console.log(myObject.x);
+
+
+function objectPropertyValue (myObject, prop, value) {
+    if (myObject[prop] !== "undefined") {
+        if (myObject[prop] === value) {
+            return true;
+        }
+    }
+    return false;
+} 
+var output = objectPropertyValue(myObject, "x", 20);
+console.log(output);
+
+
+
+/* 8. Write a function that checks if every element of the first array is contained in the second
+array. Be careful with repetitions!
+Input: [3, 4, 1, 3], [8, 9, 3, 1, 11, 4, 3]
+Output: true*/
+
+var myArr = [3, 4, 1, 3];
+var myArr2 = [8, 9, 3, 1, 11, 4, 3];
+
+function checksEveryElement (checkArray, array) {
+    var counter = 0;
+    for (var i = 0; i < checkArray.length; i++ ) {
+        for (var j = 0; j < array.length; j++) {
+            if (checkArray[i] === array[j]) {
+                counter++;
+                //console.log(j);
+                delete array[j];  //da li postoji drugi nacin osim brisanja?!
+                break;
+            } 
+        }
+    }
+    if (counter === checkArray.length) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+var output = checksEveryElement(myArr, myArr2);
+console.log(output);
+
+
+/*9. Write a function that sorts an array of strings by the number of appearances of the letter
+‘a’ or ‘A’.
+Input: [‘apple’, ‘tea’, ‘amazing’, ‘morning’, ‘JavaScript’]
+Output: [‘morning’, ‘apple’, ‘tea’, ‘JavaScript’, ‘amazing’] */
+
