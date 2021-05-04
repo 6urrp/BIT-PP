@@ -137,6 +137,18 @@ console.log(maxAndMin($random));
 
 //9. Write a function to find the median element of array.
 
+var medianArray = [1, 18, 5, 6, 9, 7, 2, 13];
+function findTheMedian (array) {
+    var myMedian;
+    if (array.length % 2 === 1) { //ako je broj elemenata u nizu neparan
+        myMedian = array[(array.length-1) / 2]; // treba mi srednji element
+    } else {
+        myMedian = (array[array.length / 2] + array[array.length / 2 - 1]) / 2; //ako je neparan treba mi zbir dva srednja i to delim sa 2
+    }
+    return myMedian;
+}
+var output = findTheMedian(medianArray);
+console.log(output);
 
 
 //10. Write a function to find the element that occurs most frequently.
