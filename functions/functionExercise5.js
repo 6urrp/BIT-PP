@@ -39,7 +39,6 @@ Output: [ 6.5, 255, 20, 79.5, 31.5, 212, 5.5, 14.5 ] */
 var array = [3, 500, -10, 149, 53, 414, 1, 19];
 
 function dividingAndAddingValues (array) {
-    var result = [];
     for (var i = 0; i < array.length; i++) {
         if (array[i] <= 0) {
             array[i] = 20;

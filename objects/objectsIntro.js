@@ -90,7 +90,7 @@ function culinaryRecipe(name, type, complex, list, prepTime, instr) {
         preparationTime: prepTime,
         instuctions: instr,
         printAllIng: function () {
-            return list.toString();
+            return this.ingredients.toString();
         },
         check: function() {
             if (prepTime <= 15) {
@@ -122,4 +122,53 @@ var tiramisu = culinaryRecipe(
     "Whisk three of the egg whites until stiff, then set aside. Whisk the egg yolks with the sugar until pale and voluminous, then whisk in the mascarpone, a little at a time, until smooth and well combined – you don't want lumps of cheese.");
 
 
-console.log(tiramisu.deleteIng(tiramisu.ingredients, "sugar"));
+console.log(tiramisu.deleteIng(tiramisu.ingredients, "mascarpone"));
+
+
+//drugi nacin
+
+function CulinaryRecipe (name, type, complex, list, prepTime, instr) {
+    this.name = name;
+    this.typeOfCuisine = type;
+    this.complexity = complex;
+    this.ingredients = list;
+    this.preparationTime = prepTime;
+    this.instuctions = instr;
+    this.printIngr = function () {
+        return this.list.toString();
+    };
+    this.check = function () {
+        if (prepTime <= 15) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+    this.deleteItem = function (list, ing) {
+        var newList = [];
+            for (var i = 0; i < list.length; i++) {
+                if (list[i] !== ing) {
+                    newList[newList.length] = list[i];
+                }
+            }
+            return newList;
+    }
+    this.changeCuisine = function (type) {
+        return this.typeOfCuisine = type;
+        
+    }
+}
+
+var tiramisu = new CulinaryRecipe (
+    "tiramisu",
+    "Italian cuisine", 
+    2, 
+    ["biscuits", "mascarpone", "whipped cream", "coffee", "sugar", "cocoa"], 
+    30,
+    "Whisk three of the egg whites until stiff, then set aside. Whisk the egg yolks with the sugar until pale and voluminous, then whisk in the mascarpone, a little at a time, until smooth and well combined – you don't want lumps of cheese."
+    );
+
+console.log(tiramisu.changeCuisine("serbian"));
+
+tiramisu.ingredients.push("liker");
+console.log(tiramisu);
