@@ -12,6 +12,35 @@ var myCoffee = {
 console.log(myCoffee.milk);
 
 
+//creating object with  - this - 
+
+function Coffee (n, s, f, m ,s) {
+    this.name = n;
+    this.strength = s;
+    this.flavour = f;
+    this.milk = m;
+    this.sugar = s;
+};
+
+var myFavCoffee = new Coffee ("nescafe", "medium", "classic", 2, false);
+console.log(myFavCoffee);
+console.log(myFavCoffee instanceof Coffee);
+console.log(myFavCoffee instanceof Object);
+
+//third way
+
+function coffee (n, s, f, m, s) {
+    return {
+        name : n,
+        strength : s,
+        flavour : f,
+        milk : m,
+        sugar : s
+    };
+}
+var preciousCoffee = coffee ("nescafe", "medium", "classic", 2, false);
+console.log(preciousCoffee);
+
 
 
 /*2. Create an object that represents your favourite movie. Please include title, actors,
@@ -33,6 +62,19 @@ var favouriteMovie = {
 
 console.log(favouriteMovie.actor.lastname);
 console.log(favouriteMovie.director.firstname);
+
+
+function Movie (n, f, l, d, g, p) {
+    this.name = n;
+    //this.actor.firstname = f;
+    //this.actor.lastname = l; //kako ovde ide posto je objekat u objektu
+    this.director = d;
+    this.genre = g;
+    this.popularity = p;
+}
+
+var myMovie = new Movie ("La La Land", "Emma", "Stone", "Damien Chazelle", "Drama/Music", 10);
+console.log(myMovie);
 
 
 /*3. Write a function that creates an object that represents a project. Each project is
@@ -65,13 +107,38 @@ function createObject (desc, lang, repos, develop) {
     return object;
 }
 
-//var projectPP = createObject("Programming Principles", "JavaScript", "https://github.com/6urrp/BIT-PP", true)
-//console.log(projectPP.reposit());
+var projectPP = createObject("Programming Principles", "JavaScript", "https://github.com/6urrp/BIT-PP", true)
+console.log(projectPP);
 
 var projectWeb = createObject("Web Projects", ["HTML", "CSS", "SASS", "JavaScript"], "https://github.com/6urrp/BIT-WEB", true);
 console.log(projectWeb.isJS());
 
 
+function Project (d, pl, repo, dev) {
+    this.description = d;
+    this.language = pl;
+    this.repository = repo;
+    this.develop = dev;
+    this.printRepository = function () {
+        return this.repository;
+    };
+    this.javascriptOrNot = function () {
+        if (this.language === "JavaScript") {
+            return true;
+        } else {
+            return false;
+        }
+    };
+    this.inDevelop =  function () {
+        return this.develop ? "Your project is in development" : "Your project is not in development";
+    };
+}
+
+var myRepo = new Project ("Programming Principles", "JavaScript", "https://github.com/6urrp/BIT-PP", true);
+//console.log(myRepo);
+console.log(myRepo.inDevelop());
+console.log(myRepo.javascriptOrNot());
+console.log(myRepo.printRepository());
 /*4. Write a function that creates an object that represents a culinary recipe. Each recipe is
 described by: name, type of cuisine, complexity (value from 1 to 5), list of ingredients,
 preparing time, preparing instruction.
