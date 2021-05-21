@@ -161,34 +161,52 @@ some of the elements. Use functions defined in a) or b) to test it.*/
 /*6.
 a. Write a list (array) of products you usually buy in the supermarket. Write a price
 and name for each product. For example,
-[{name: ‘apples’, price: 100}, {name: ‘milk’, price: 80}, {name:’bananas’, price: 150}]
+[{name: ‘apples’, price: 100}, {name: ‘milk’, price: 80}, {name:’bananas’, price: 150}]*/
+
+var products = [{product: "strawberries", price: 129}, {product: "nescafe", price: 500}, {product: "balans yoghurt", price: 99}];
 
 
+//b. Write a function that calculates the total price of your shopping list.
+
+function totalPrice(arr) {
+    var calc = 0;
+    arr.forEach (function (element) {
+        calc += element.price;
+    });
+    return calc;
+}
+var priceE = totalPrice(products);
+console.log(priceE);
 
 
+//c. Write a function that calculates the average product price of your shopping list.
+//Print this value with the precision of three decimals.
+
+function averagePrice (arr) {
+    var avg = totalPrice(arr) / arr.length;
+    return avg.toFixed(3);
+}
+var average = averagePrice(products);
+console.log(average);
 
 
-
-
-
-
-b. Write a function that calculates the total price of your shopping list.
-
-
-
-
-
-
-c. Write a function that calculates the average product price of your shopping list.
-Print this value with the precision of three decimals.
-
-
-
-
-
-
+/*
 d. Write a function that prints out the name of the most expensive product on your
 shopping list. Write the name in uppercase.*/
+
+function mostExpensive (arr) {
+    var max = -Infinity;
+    var productName;
+    arr.forEach(function (el) {
+        if (el.price > max) {
+            max = el.price;
+            productName = el.product.toUpperCase();
+        }
+    });
+    return "The most expensive product of your list is " + productName + " and it costs " + max + " dinara!";
+}
+var expensive = mostExpensive(products);
+console.log(expensive);
 
 
 
