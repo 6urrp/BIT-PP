@@ -252,4 +252,83 @@ console.log(expensive);
 
 
 
+/*7.
+a. Write a function that checks if a given string is written in all capitals.*/
 
+function isAllCapital (string) {
+    var capitalString = string.toUpperCase(); 
+    return string === capitalString;
+}
+
+var myString = "mushrooms";
+var result = isAllCapital(myString);
+console.log(result);
+
+
+//b. Write a function that checks if a given string contains any digits.
+
+var stringNumber = "orch1d";
+
+function hasNumber (string) {
+    var output = false;
+    for (var i = 0; i < string.length; i++) {
+        if (!isNaN(i)) {
+            output = true;
+        }
+    };
+    return output;
+}
+var output = hasNumber(stringNumber);
+console.log(output);
+
+
+
+//c. Write a function that checks if a given string is a valid hexadecimal color.
+
+
+function isHexadecimalColor (string) {
+
+}
+ 
+
+//d. Write a function that checks if a given number belongs to the interval from 1900 to 2018.
+
+function intervalNumber (number) {
+    if (number === Math.min(Math.max(1900, number), 2018)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+var a = 2019;
+var output1 = intervalNumber(a);
+console.log(output1);
+
+
+
+//e. Write a function named validator that returns an object with properties
+//stringValidator, passwordValidator, colorValidator, and yearValidator referencing
+//the functions from a) to d).
+
+function Validator (string, pass, year) {
+    this.stringValidator = isAllCapital(string);
+    this.passwordValidator = hasNumber(pass);
+    //colorValidator: ,
+    this.yearValidator = intervalNumber(year);
+};
+
+var valid = new Validator("petAr", "sifrica1", 1995);
+console.log(valid);
+
+
+
+/*8. Write a function that calculates a number of days to your birthday.
+
+Input: 25 February
+Output: 5 days*/
+
+var today = new Date();
+var year = today.getFullYear();
+console.log(today);
+console.log(year);
