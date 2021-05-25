@@ -337,12 +337,12 @@ Output: 5 days*/
 
 var date1 = new Date();
 var date2 = new Date("03/06/2022");
+//console.log(date2);
 
-var differenceInTime = date2.getTime() - date1.getTime();
+var differenceInTime = date2 - date1; // nije potrebno getTime, automatski to radi
 var differenceInDay = Math.floor(differenceInTime / (1000 * 3600 * 24));
-
+console.log(differenceInTime);
 console.log(differenceInDay);
-
 
 
 
@@ -433,7 +433,8 @@ function arrayOfRandoms (numb, func) {
     var arr = [];
     console.log(func);
     for (var i = 0; i < numb; i++) {
-        arr[i] = func(i+1, 10*(i+1));
+        var currRandom = func(i+1, 10*(i+1));
+        arr.push(Math.floor(currRandom));
     }
     return arr;
 }
@@ -456,7 +457,7 @@ function shuffle (array) {
     array.forEach(function (el, i){
         var randomIndex = parseInt(Math.random() * array.length);
         var p = array[randomIndex];
-        array[randomIndex] = array[i];
+        array[randomIndex] = el;
         array[i] = p;
     })
     return array;

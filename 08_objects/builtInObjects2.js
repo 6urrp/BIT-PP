@@ -6,11 +6,13 @@ var $number = 12345;
 
 function reverseNumber (number) {
     var reverse = number.toString().split("").reverse().join("");
-    return parseFloat(reverse);
+    return parseFloat(reverse); //parsiram da bi bio broj a ne string
 }
 var result = reverseNumber($number);
 console.log(result);
 console.log(typeof result);
+
+
 
 
 /*2. Write a JavaScript function that returns a passed string with letters in alphabetical order.
@@ -29,17 +31,28 @@ console.log(result1);
 
 
 
+
+
 /*3. Write a function to alphabetize words of a given string. Alphabetizing a string means
 rearranging the letters so they are sorted from A to Z.
 "Republic Of Serbia" -> "Rbceilpu Of Sabeir"*/
 
-var alpha = "Republic Of Serbia"
+
+
+var a = "Republic Of Serbia";
+
 
 function alphabetizingString (string) {
-    
+    var arr = string.split(" ");
+    var newArr = [];
+    arr.forEach(function(el) {
+        var sortEl = el.split("").sort().join("");
+        newArr.push(sortEl);
+    }) 
+    return newArr.join(" ");
 }
 
-var result2= alphabetizingString (alpha);
+var result2= alphabetizingString (a);
 console.log(result2);
 
 
@@ -49,7 +62,7 @@ console.log(result2);
 var stringToSplit = "John Snow";
 
 function stringInArray (string) {
-    return string.split(" ");
+    return string.split(' ');
 }
 
 var result3 = stringInArray(stringToSplit);
@@ -59,6 +72,19 @@ console.log(result3);
 /*5. Write a function to convert a string to its abbreviated form.
 "John Snow" -> "John S."*/
 
+var $string = "John Snow";
+
+
+function abbreviatedString (string) {
+    var splitString = string.split(" ");
+    splitString[1] = splitString[1].charAt(0) + ".";
+
+
+    return splitString.join(" ");
+}
+
+var output = abbreviatedString($string);
+console.log(output);
 
 
 
@@ -67,14 +93,28 @@ console.log(result3);
 "0000", ‘123’, "l" -> 0123
 "00000000", ‘123’, "r" -> 12300000*/
 
+function addLeftRight (string0, string1, place) {
+    var zeroLength = string0.length;
+    var oneLength = string1.length;
+    var mainLength = zeroLength - oneLength; 
+    
+    if (place === "l") {
+        return string0.slice(0, mainLength).concat(string1);
+    } else if (place === "r") {
+        return string1.concat(string0.slice(0, mainLength));
+    }
+}
+console.log(addLeftRight("00000000", "123", "r"));
+
+
 
 
 /*7. Write a function to capitalize the first letter of a string and returns modified string.
 "js string exercises" -> "Js string exercises"*/
 
 
-var nesto = "blabla"
-console.log(nesto[0].toUpperCase());
+
+
 
 /*8. Write a function to hide email addresses to protect them from unauthorized users.
 "somerandomaddress@example.com" -> "somerand...@example.com"*/
