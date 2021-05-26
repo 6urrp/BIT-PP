@@ -107,23 +107,77 @@ function addLeftRight (string0, string1, place) {
 console.log(addLeftRight("00000000", "123", "r"));
 
 
-
-
 /*7. Write a function to capitalize the first letter of a string and returns modified string.
 "js string exercises" -> "Js string exercises"*/
 
+var a = "js string exercises";
 
+function firstCapitalize (string) {
+    return string[0].toUpperCase() + string.slice(1);
+};
+
+var $output = firstCapitalize(a);
+console.log($output);
+
+//drugi nacin
+
+var b = "js string exercises";
+
+function firstCapitalize (string) {
+    return string[0].toUpperCase().concat(string.slice(1));
+}
+
+var $output1 = firstCapitalize(b);
+console.log($output1);
 
 
 
 /*8. Write a function to hide email addresses to protect them from unauthorized users.
 "somerandomaddress@example.com" -> "somerand...@example.com"*/
 
+var email = "somerandomaddress@example.com";
+
+function hideEmail (email) {
+    var emailArr = email.split("@");
+    var firstPart = emailArr[0];
+    var toLength = firstPart.length / 2;
+    return firstPart.slice(0, toLength).concat("...@", emailArr[1]);
+}
+var res = hideEmail(email);
+console.log(res);
 
 
 
 /*9. Write a program that accepts a string as input and swaps the case of each character. For
-example, if you input &#39;The Quick Brown Fox&#39;, the output should be &#39;tHE qUICK bROWN fOX&#39;.
+example, if you input "The Quick Brown Fox", the output should be "tHE qUICK bROWN fOX".
 var UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var LOWER = "abcdefghijklmnopqrstuvwxyz";
 "The Quick Brown Fox" -> "tHE qUICK bROWN fOX"*/
+
+var swap = "The Quick Brown Fox";
+
+function swapCharacter (string) {
+    var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var upperArr = upper.split("");
+    var lower = "abcdefghijklmnopqrstuvwxyz";
+    var lowerArr = lower.split("");
+    var arrString = string.split("");
+    var space = " ";
+    var result = [];
+    //console.log(arrString);
+    arrString.forEach(function (el){
+        for (var i = 0; i < upperArr.length; i++) {
+            if (el === upperArr[i]) {
+                result.push(el.toLowerCase());
+            } else if (el === lowerArr[i]) {
+                result.push(el.toUpperCase());
+            } else if (el === space) {
+                result.push(el);
+                break;
+            }
+        }
+    })
+    return result.join("");
+}
+
+console.log(swapCharacter(swap)); 
