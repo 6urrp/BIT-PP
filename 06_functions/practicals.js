@@ -224,15 +224,22 @@ console.log(output);
 Output: 25. 10. 2018.*/
 
 function theNextDay () {
-
+    var current = new Date();
+    current.setDate(current.getDate() + 1);
+    return current;
 }
+console.log(theNextDay());
 
 /*11. Write a function that prints out the date of the previous day.
 Output: 23. 10. 2018. */
 
 function thePreviousDay () {
-
+    var current = new Date();
+    current.setDate(current.getDate() - 1);
+    return current;
 }
+
+console.log(thePreviousDay());
 
 /* 12. Write a function that prints out an array of the numbers aligned from the right side.
 Input: [78, 111, 4, 4321]
