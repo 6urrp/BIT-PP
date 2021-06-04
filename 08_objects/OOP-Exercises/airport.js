@@ -60,6 +60,22 @@
             }
             this.passengers.push(passenger);
         };
+        this.getData = function () {
+            var result = "";
+            var day = this.date.getDate();
+            var month = this.date.getMonth() + 1; //ide od 0-11
+            var year = this.date.getFullYear();
+            result += "\t" + day + "." + month + "." + year + ", " + this.relation + "\n";
+            this.passengers.forEach(function (pass) {
+                result += "\t\t" + pass.getData() + "\n"; // getData()
+            })
+            return result;
+             
+        }
+        //method that helps us get the number of passengers
+        this.numberOfPassengers = function () {
+            return this.passengers.length;
+        }
     }
 
     function Airport (flights) {
@@ -70,24 +86,53 @@
                 throw new Error ("Invalid input!")
             }
             this.listOfFlights.push(flight);
+        };
+        //method that helps us get the number of passengers
+        this.passengersLength = function () {
+			var count = 0;
+			this.listOfFlights.forEach(function(flight) {
+				count += flight.numberOfPassengers();
+			})
+			return count;
+		}
+        this.getData = function () {
+            var result = "Airport: " + this.name + ", total passengers: " + this.passengersLength() + "\n";
+            this.listOfFlights.forEach(function(flight) {
+				result += flight.getData();
+			});
+            return result;
         }
-    }
+    };
+
+    function createFlight (relation, date) {
+        return new Flight (relation, date);
+    };
+
+    function createPassenger (firstname, lastname, seatnumber, category) {
+        var person = new Person(firstname, lastname);
+        var seat = new Seat(seatnumber, category);
+        return new Passenger(person, seat);
+    };
 
 
     //testing
 
     try {
-        var person1 = new Person("Sandra", "Tasic");
-        var seat1 = new Seat ();
-        var passenger1 = new Passenger(person1, seat1);
-        var flight1 = new Flight("Belgrade - New York", "Oct 26 2022")
+        var airport = new Airport();
+        var flight1 = createFlight("Belgrade - New York", 'Oct 25 2017');
+        var flight2 = createFlight("Barcelona - Belgrade", 'Nov 11 2017');
+        var passenger1 = createPassenger("John", "Snow", 1, "b");
+        var passenger2 = createPassenger("Cersei", "Lannister", 2, "b");
+        var passenger3 = createPassenger("Daenerys", "Targaryen", 14);
+        var passenger4 = createPassenger("Tyrion", "Lannister");
         flight1.addPassenger(passenger1);
-        var airport1 = new Airport();
-        airport1.addFlight(flight1);
-        console.log(airport1);
+        flight1.addPassenger(passenger2);
+        flight2.addPassenger(passenger3);
+        flight2.addPassenger(passenger4);
+        airport.addFlight(flight1);
+        airport.addFlight(flight2);
+        console.log(airport.getData());
     } catch (err) {
         console.log("Error message: " + err.message);
     }
 })();
-
-

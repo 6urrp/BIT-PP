@@ -183,7 +183,7 @@ Output: [’Programming’, ‘product’]*/
 var someArray = ["JavaScript", "Programming", "fun", "product"];
 
 function substringElements (array) {
-    var newArr = array.filter (function (element) {
+    var newArr = array.filter(function (element) {
         var lower = element.toLowerCase();
         return (lower.slice(0, 3) === "pro");
     });
@@ -197,8 +197,15 @@ console.log(res);
 /*c. Write a function that expects an array and a callback function that filters out
 some of the elements. Use functions defined in a) or b) to test it.*/
 
-
-
+function filterArray(array, condition) {
+    var newArr = [];
+    array.forEach(function(el){
+      if (condition(el)) {
+        newArr.push(el);
+      }
+    });
+    return newArr;
+}
 
 
 
