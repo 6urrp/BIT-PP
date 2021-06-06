@@ -23,6 +23,7 @@
         this.AUSTRALIA = "AU";
     };
 
+
     function Person (name, surname, date) {
         if (!name || !surname || !date) {
             throw new Error ("Please, fill out the required fields!")
@@ -36,8 +37,6 @@
             var month = this.dateOfBirth.getMonth() + 1;
             var year = this.dateOfBirth.getFullYear();
             return result += this.name + " " + this.surname + ", " + day + "." + month + "." + year + ".";
-
-
         };
     };
     
@@ -56,11 +55,13 @@
             var expectedAmount = (this.country.odds * this.betAmount).toFixed(2);
             var age = getAge(this.person.dateOfBirth);
             return abbr + ", " + expectedAmount + " eur, " + this.person.name + " " + this.person.surname + ", " + age + " years";
-            
         }
     }
 
     function Address (country, city, code, street, number) {
+        if (!country || !city || !code || !street || !number) {
+            throw new Error ("Please, insert your full address!")
+        }
         this.country = country;
         this.city = city;
         this.postalCode = code;
@@ -106,11 +107,13 @@
                 place.listOfPlayers.forEach(function (player) {
                     result += "\t\t" + player.getMethod() + "\n";
                     country.push(player.country.countryName);
-                })
-                
+                })  
             });
-            console.log(country);
-            return result;
+            var split = mostFrequent(country).split(",");
+            if (split[1] === 1) {
+                return result += "All countries occur equally in Betting House.";
+            }
+            return result += "There are " + split[1] + " bets on " + split[0];
 
         }
     };
@@ -153,12 +156,32 @@
         return age;
     }
 
+    function mostFrequent (array) {
+        var theMost = 1;
+        var counter = 0;
+        var temp;
+        for (var i = 0; i < array.length; i++) {
+            for (var j = i; j <array.length; j++) {
+                if (array[i] === array[j]) {
+                    counter++;
+                } 
+                if (theMost < counter) {
+                    theMost = counter;
+                    temp = array[i];
+                }
+            }
+            counter = 0;
+        }
+        return temp + "," + theMost;
+    }
 
 
     //testing
     
     try {
         var Continent = new Continent();
+        Object.freeze(Continent);
+        
         //first player
         var person1 = new Person("El", "Profesor", "Feb 23 1975");
         var country1 = new Country("Spain", 250, Continent.EUROPE);
