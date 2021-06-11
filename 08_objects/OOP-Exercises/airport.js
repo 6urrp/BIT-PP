@@ -14,14 +14,11 @@
     }
 
     function Seat (number, ctgr) {
-        number = number || (parseInt(((100 - 10) * Math.random()) + 10));
-        ctgr = ctgr || "e";
-        if (!number || !ctgr) {
-            throw new Error ("Please fill in all fields!");
-        };
         if (typeof number !== "number") {
             throw new Error ("Your entry must be in the form of numbers");
         };
+        number = number || (parseInt(((100 - 10) * Math.random()) + 10));
+        ctgr = ctgr || "e";
         this.seatNumber = number;
         if (!['e', 'b'].includes(ctgr)) { //prosledjeni element trazi u array-u
 			throw new Error('Invalid input!') 
