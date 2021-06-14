@@ -28,9 +28,13 @@ Employee.prototype.increaseSalary = function () {
 }
 
 var emp1 = new Employee("Sandra", "Tasic", "frontend developer", 70000);
-console.log(emp1.hasOwnProperty("name"));//true!!
+console.log(emp1.hasOwnProperty("name"));//zasto je true ako je nasledio?!
 console.log(emp1.increaseSalary());
 console.log(emp1);
+
+
+
+
 
 
 function Developer (name, surname, job, salary, specialization) {
