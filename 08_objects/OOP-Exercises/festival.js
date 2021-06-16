@@ -27,19 +27,43 @@
         }
     }
 
-    function Program (date, total) {
-        if (!date || !total) {
+    function Program (date) {
+        if (!date) {
             throw new Error ("Invalid input!")
         }
         this.date = new Date (date);
         this.listOfMovies = [];
-        this.totalNumberOfMovies = total;
+        this.totalNumberOfMovies = 0;
+        this.addMovie = function (movie) {
+            if (!(movie instanceof Movie)) {
+                throw new Error ("Invalid input!")
+            }
+            this.listOfMovies.push(movie);
+            this.totalNumberOfMovies++;
+        }
+        this.getData = function () {
+            var result = "";
+            var lengthOfMovies = 0;
+            var movieData = "";
+            this.listOfMovies.forEach(function (el) {
+                lengthOfMovies += el.length;
+                movieData += "\t" + el.getData() + "\n";
+            })
+            return result += this.date.getDay() + "." + (this.date.getMonth()+1) +  "." + this.date.getFullYear()  + ", program length " + lengthOfMovies + "\n" + movieData;
+        }
     }
 
-    function Festival (name, number) { //numbre of movies in all programs
+    function Festival (name) {
         this.name = name;
         this.listOfPrograms = [];
-        this.numberOfAllMovies = number;
+        this.numberOfAllMovies = 0;
+        this.addProgram = function (program) {
+            if (!(program instanceof Program)) {
+                throw new Error ("Invalid input!")
+            }
+            this.listOfPrograms.push(program);
+            this.numberOfAllMovies++;
+        }
     }
 
 
@@ -48,7 +72,11 @@
     try {
         var genree = new Genre ("horor");
         var movie = new Movie ("Friday the 13th",genree, 96)
-        console.log(movie.getData());
+        var program = new Program ("Oct 26 2020")
+        var festival = new Festival ("Venice Film Festival")
+        program.addMovie(movie);
+        festival.addProgram(program)
+        console.log(program.getData());
     } catch (err) {
         console.log(err.message)
     }
