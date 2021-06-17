@@ -49,7 +49,7 @@
                 lengthOfMovies += el.length;
                 movieData += "\t" + el.getData() + "\n";
             })
-            return result += this.date.getDay() + "." + (this.date.getMonth()+1) +  "." + this.date.getFullYear()  + ", program length " + lengthOfMovies + "\n" + movieData;
+            return result += this.date.getDay() + "." + (this.date.getMonth()+1) +  "." + this.date.getFullYear()  + ", program duration " + lengthOfMovies + "\n" + movieData;
         }
     }
 
@@ -64,7 +64,23 @@
             this.listOfPrograms.push(program);
             this.numberOfAllMovies++;
         }
+        this.getData = function () {
+            var result = "";
+            var allPrograms = "";
+            this.listOfPrograms.forEach(function (el) {
+                allPrograms += "\t" + el.getData();
+            })
+            return result += this.name + " has " + this.numberOfAllMovies + " movie titles" + "\n" + allPrograms;
+        }
     }
+
+
+    //object factory
+
+    function createMovie
+
+
+
 
 
     //testing
@@ -76,7 +92,7 @@
         var festival = new Festival ("Venice Film Festival")
         program.addMovie(movie);
         festival.addProgram(program)
-        console.log(program.getData());
+        console.log(festival.getData());
     } catch (err) {
         console.log(err.message)
     }

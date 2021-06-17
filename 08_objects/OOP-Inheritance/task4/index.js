@@ -6,7 +6,7 @@ class App {
     }
 
     getData() {
-        console.log(this.name + ", " + this.licence + ", " + this.stars)
+        return this.name + ", " + this.licence + ", " + this.stars
     }
 
     isCCLicence() {
@@ -14,11 +14,11 @@ class App {
     }
 
     like() {
-        this.stars += 1;
+        this.stars++;
     }
 
     showStars() {
-        console.log(this.stars);
+        return this.stars;
     }
 }
 
@@ -43,7 +43,7 @@ class WebApp extends App {
     }
 
     getData() {
-        console.log(this.name + ", " + this.url + ", " + this.technologies + ", " + this.licence + ", " + this.stars);
+        return super.getData() + ", " + this.url + ", " + this.technologies; //super.getData()
     }
 }
 
@@ -66,17 +66,17 @@ class MobileApp extends App {
     }
 
     getData() {
-        console.log(this.name + ", " + this.platforms + ", " + this.licence + ", " + this.stars);
+        return super.getData() + ", " + this.platforms;
     }
 }
 
 
 var web = new WebApp("Bla Bla Car", "https://www.blablacar.rs/", ["JavaScript", "React", "PHP"], "CC", 3.5);
 console.log(web.getData());
-console.log(web.like());
-console.log(web);
+//console.log(web.like());
+//console.log(web);
 
 var mobile = new MobileApp("outloock", ["iOS", "Android"], "AA", 4);
-console.log(mobile);
-console.log(mobile.showStars());
-console.log(mobile.isCCLicence());
+//console.log(mobile);
+//console.log(mobile.showStars());
+//console.log(mobile.isCCLicence());

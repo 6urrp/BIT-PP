@@ -20,7 +20,7 @@ class Employee extends Person {
     }
 
     getSalary() {
-        console.log(this.salary)
+        return this.salary
     }
     
     increaseSalary() {
@@ -38,7 +38,7 @@ class Developer extends Employee {
     }
 
     getSpecialization() {
-        console.log(this.specialization)
+        return this.specialization
     }
 }
 
@@ -52,7 +52,7 @@ class Manager extends Employee {
     }
 
     getDepartment() {
-        console.log(this.department)
+        return this.department
     }
 
     changeDepartment(dep) {
