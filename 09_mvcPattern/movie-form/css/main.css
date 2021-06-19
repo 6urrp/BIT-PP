@@ -23,7 +23,7 @@ h1 {
     padding: 10px;
 }
 
-input, button, select {
+input, select {
     display: block;
     width: 100%;
     margin: 10px 0;
@@ -40,14 +40,14 @@ select:focus{
     border: 3px solid rgb(130,187,247);
 }
 
-button {
+#button {
     border: none;
     background-color: rgb(76,175,79);
     color: white;
     font-size: 17px;
 }
 
-button:hover {
+#button:hover {
     background-color: rgb(103, 201, 106);
     cursor: pointer;
 }
