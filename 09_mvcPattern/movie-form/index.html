@@ -18,51 +18,53 @@
             <div class="movie-form">
                 <form action="">
                     <label for="movie-title">Title</label>
-                    <input type="text" id="movie-title" placeholder="Title">
+                    <input type="text" id="movie-title" placeholder="Title" required>
 
                     <label for="movie-length">Length (min)</label>
-                    <input type="text" id="movie-length" placeholder="Length in min">
+                    <input type="text" id="movie-length" placeholder="Length in min" required>
 
-                    <select name="" id="">
+                    <select id="movie-genre" required>
                         <option hidden disabled selected value> - </option>
-                        <option value="">Action</option>
-                        <option value="">Sci-fi</option>
-                        <option value="">Drama</option>
-                        <option value="">Romance</option>
-                        <option value="">Comedy</option>
-                        <option value="">Thriller</option>
-                        <option value="">Horror</option>
+                        <option>Action</option>
+                        <option>Sci-fi</option>
+                        <option>Drama</option>
+                        <option>Romance</option>
+                        <option>Comedy</option>
+                        <option>Thriller</option>
+                        <option>Horror</option>
                     </select>
 
-                    <input type="button" id="button" value="Create movie">
+                    <input type="button" class="button" value="Create movie">
                 </form>
                 <p class="error-text"></p>
-                <p class="create-movie"></p>
+                <ul class="create-movie">
+
+                </ul>
             </div>
 
             <p>Program</p>
             <div class="program-form">
                 <form action="">
                     <label for="program-date">Date</label>
-                    <input type="date" name="" id="program-date">
+                    <input type="date" name="" id="program-date" required>
 
-                    <input type="button" id="button" value="Create program">
+                    <input type="button" class="button" value="Create program">
                 </form>
                 <p class="error-date"></p>
                 <p class="create-program"></p>
 
                 <form action="">
-                    <label for="movie-select"></label>
-                    <select name="" id="movie-select">
+                    <label for="movie-select">Movie</label>
+                    <select name="" id="movie-select" required>
                         <option hidden disabled selected value> - </option>
                     </select>
 
-                    <label for="program-select"></label>
-                    <select name="" id="program-select">
+                    <label for="program-select">Program</label>
+                    <select name="" id="program-select" required>
                         <option hidden disabled selected value> - </option>   
                     </select>
 
-                    <input type="button" id="button" value="Add movie to program">
+                    <input type="button" class="button" value="Add movie to program">
                 </form>
             </div>
 
