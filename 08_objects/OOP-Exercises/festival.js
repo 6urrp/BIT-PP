@@ -77,7 +77,14 @@
 
     //object factory
 
-    function createMovie
+    function createMovie (title, genre, length) {
+        var movieGenre = new Genre(genre)
+        return new Movie (title, movieGenre, length);
+    }
+
+    function createProgram(date) {
+        return new Date(date);
+    }
 
 
 
@@ -86,13 +93,26 @@
     //testing
 
     try {
-        var genree = new Genre ("horor");
-        var movie = new Movie ("Friday the 13th",genree, 96)
-        var program = new Program ("Oct 26 2020")
-        var festival = new Festival ("Venice Film Festival")
-        program.addMovie(movie);
-        festival.addProgram(program)
-        console.log(festival.getData());
+        var festival = new Festival ("The Cannes Festival");
+
+        var program1 = new Program("July 14 2021");
+        var program2 = new Program("July 16 2022");
+
+        var movie1 = createMovie("Pulp Fiction", "Crime", 154);
+        var movie2 = createMovie("The Shawdhank Redemption", "Drama", 142);
+        var movie3 = createMovie("Parasite", "Thriller", 132);
+        var movie4 = createMovie("Memento", "Mystery", 113);
+
+        program1.addMovie(movie1);
+        program1.addMovie(movie4);
+
+        program2.addMovie(movie2);
+        program2.addMovie(movie3);
+
+        festival.addProgram(program1);
+        festival.addProgram(program2);
+
+        console.log(festival)
     } catch (err) {
         console.log(err.message)
     }
