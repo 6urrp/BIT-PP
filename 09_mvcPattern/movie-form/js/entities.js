@@ -10,9 +10,6 @@ Movie.prototype.getData = function () {
     return this.name + ", " + this.length + "min, " + abbrevation;
 }
 
-var movie = new Movie ("Titanic", 123, "Drama")
-console.log(movie.getData());
-
 
 function Program (date) {
     this.date = new Date(date);
