@@ -62,7 +62,52 @@ h1 {
 
 
 
+/************************** FORM ****************************/
+
+.form-container { 
+    width: 100%;
+    background-color: rgb(247,247,247);
+    text-align: center;
+}
+
+select, input {
+    font-size: 20px;
+    padding: 10px;
+    color: rgb(56, 55, 55);
+    margin: 18px 5px;
+    border: 1px solid rgb(216, 210, 210);
+    border-radius: 5px;
+}
+
+select:focus, input:focus {
+    outline: none;
+    border: 1px solid rgb(65,189,185);
+}
+
+#student-name {
+    width: 400px;
+}
+
+#student-grade {
+    width: 100px;
+}
+
+button {
+    border: none;
+    font-size: 30px;
+    padding: 0 7px;
+    color:rgb(51,184,180);
+    background-color: transparent;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(216, 210, 210);
+    border-radius: 5px;
+    color: rgb(110, 165, 163);
+}
 
 
+/**************** LIST OF PASSED/FAILED **********************/
 
 
