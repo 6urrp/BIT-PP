@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-container {
+    width: 100vw;
+}
+.cover {
+    background-image: url("https://thumbs.dreamstime.com/b/open-book-hardback-books-wooden-table-education-background-back-to-school-copy-space-text-75367702.jpg");
+    background-size: cover;
+    height: 500px;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(180,147,121);
+    font-size: 3em;
+    padding-top: 60px;
+    padding-bottom: 30px;
+}
+
+.total {
+    text-align: center;
+    color: rgb(180,147,121);
+    font-size: 30px;
+    padding-bottom: 30px;
+}
+
+.passed-list, .failed-list {
+    width: 400px;
+    margin: 20px auto;
+}
+.passed-list li, .failed-list li {
+    display: inline-block;
+    padding: 15px 7px;
+}
+
+.passed-list {
+    background-color: rgb(51,184,180);
+    color: white
+}
+
+.failed-list {
+    background-color: rgb(252,82,79);
+    color: white
+}
+
+.passed {
+    width: 300px;
+    text-align: left;
+    color: rgb(94, 91, 91);
+}
+
+.failed {
+    width: 300px;
+    text-align: left;
+    color: rgb(94, 91, 91);
+}
+
+
+
+
+
+
+
