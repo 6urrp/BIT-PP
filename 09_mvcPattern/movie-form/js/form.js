@@ -5,50 +5,90 @@ var movieButton = document.querySelector(".movie-form form .button")
 var movieParagraph = document.querySelector(".create-movie")
 var errorText = document.querySelector(".error-text")
 var date = document.getElementById("program-date");
+var programList = document.querySelector(".create-program")
 var programButton = document.getElementById("program-button")
 var programSelect = document.getElementById("program-select")
 var errorDate = document.querySelector(".error-date")
 var movieSelect = document.getElementById("movie-select")
+var movieToProgram = document.getElementById("movie-program");
+console.log(errorDate)
 
+var festival = new MovieFestival();
 
-movieButton.addEventListener("click", function createMovie () {
+function createMovie () {
     var movieValue = title.value;
     var lengthValue = length.value;
     var genreValue = genre.options[genre.selectedIndex].text;
 
     var movie = new Movie(movieValue, lengthValue, genreValue);
+
     if (movieValue === "" || lengthValue === "" || genre.selectedIndex === 0) {
-        errorText.innerText = "All input fields are required!"
-    } else {
-        errorText.innerText = ""
-        var li = document.createElement("li")
-        li.innerText = movie.getData();
-        movieParagraph.appendChild(li);
-        var option = document.createElement("option");
-        option.innerHTML = movie.getData();
-        movieSelect.appendChild(option);
+        errorText.innerText = "All input fields are required!";
+        return;
     }
+    errorText.innerText = "";
+
+    var li = document.createElement("li")
+    li.innerText = movie.getData();
+    movieParagraph.appendChild(li);
+    var option = document.createElement("option");
+    option.innerHTML = movie.getData();
+    movieSelect.appendChild(option);
+    
+    festival.addMovies(movie);
     
 
     title.value = "";
     length.value = "";
     genre.selectedIndex = 0;
+}
 
-})
+movieButton.addEventListener("click", createMovie);
 
-programButton.addEventListener("click", function createProgram() {
-    var inputDate = new Program(date.value);
 
-    if (date.value === "") {
-        errorDate.innerText = "Invalid date!"
-    } else {
-        errorDate.innerText = "";
-        var option = document.createElement("option")
-        option.innerText = inputDate.getData();
-        programSelect.appendChild(option);
+
+function createProgram() {
+    if(!date.value) {
+        errorDate.innerText = "Date required!";
+        return;
     }
+    
+    var inputDate = new Date(date.value);
+   
+    if (inputDate.getTime() < Date.now()) {
+        errorDate.innerText = "Invalid date input!";
+        return;
+    }
+    errorDate.innerText = "";
+
+    var program = new Program(inputDate);
+    festival.addPrograms(inputDate);
+    var index = festival.listOfAllPrograms.length - 1;
+
+    var li = document.createElement("li")
+    li.innerText = program.getData();
+    li.setAttribute("id", "item-" + index)
+    programList.appendChild(li);
+
+    var option = document.createElement("option")
+    option.innerText = program.getDate();
+    option.setAttribute("value", index);
+    programSelect.appendChild(option);
+
     date.value = "";
-})
+}
+
+programButton.addEventListener("click", createProgram);
+console.log(festival)
+
+
+function addMovieToProgram() {
+    var movieInput = movieSelect.value;
+    var programInput = programSelect.value;
+
+}
+
+movieToProgram.addEventListener("click", addMovieToProgram)
 
 
 
