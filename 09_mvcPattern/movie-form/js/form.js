@@ -21,6 +21,8 @@ function createMovie () {
     var genreValue = genre.options[genre.selectedIndex].text;
 
     var movie = new Movie(movieValue, lengthValue, genreValue);
+    festival.addMovies(movie);
+    var index = festival.listOfAllMovies.length - 1;
 
     if (movieValue === "" || lengthValue === "" || genre.selectedIndex === 0) {
         errorText.innerText = "All input fields are required!";
@@ -31,13 +33,12 @@ function createMovie () {
     var li = document.createElement("li")
     li.innerText = movie.getData();
     movieParagraph.appendChild(li);
+
     var option = document.createElement("option");
     option.innerHTML = movie.getData();
+    option.setAttribute("value", index);
     movieSelect.appendChild(option);
     
-    festival.addMovies(movie);
-    
-
     title.value = "";
     length.value = "";
     genre.selectedIndex = 0;
@@ -62,7 +63,7 @@ function createProgram() {
     errorDate.innerText = "";
 
     var program = new Program(inputDate);
-    festival.addPrograms(inputDate);
+    festival.addPrograms(program);
     var index = festival.listOfAllPrograms.length - 1;
 
     var li = document.createElement("li")
@@ -79,13 +80,23 @@ function createProgram() {
 }
 
 programButton.addEventListener("click", createProgram);
-console.log(festival)
-
 
 function addMovieToProgram() {
     var movieInput = movieSelect.value;
     var programInput = programSelect.value;
+    console.log(movieInput);
+    console.log(programInput);
 
+    var movie = festival.listOfAllMovies[movieInput];
+    var program = festival.listOfAllPrograms[programInput];
+    
+    program.addMovie(movie);
+
+    var liNode = document.querySelector("#item-" + programInput);
+    liNode.innerText = program.getData();
+    
+    movieSelect.value = "";
+    programSelect.value = "";
 }
 
 movieToProgram.addEventListener("click", addMovieToProgram)

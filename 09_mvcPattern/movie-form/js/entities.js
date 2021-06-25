@@ -56,10 +56,9 @@ Program.prototype.getData = function() {
         result += ", Program to be announced!";
         return result;
     }
-    result +=", " + this.totalMovies() + ", duration: " + this.lengthOfAllMovies() + "min."
+    if(this.totalMovies() === 1) {
+        return result +=", " + this.totalMovies() + " movie, duration: " + this.lengthOfAllMovies() + "min."
+    }
+    result +=", " + this.totalMovies() + " movies, duration: " + this.lengthOfAllMovies() + "min."
     return result;
 }
-
-
-var prg = new Program("Jun 26 2022");
-console.log(prg.getData());
