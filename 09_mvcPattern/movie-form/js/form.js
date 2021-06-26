@@ -21,21 +21,24 @@ function createMovie () {
     var genreValue = genre.options[genre.selectedIndex].text;
 
     var movie = new Movie(movieValue, lengthValue, genreValue);
-    festival.addMovies(movie);
-    var index = festival.listOfAllMovies.length - 1;
-
+    
+    
     if (movieValue === "" || lengthValue === "" || genre.selectedIndex === 0) {
         errorText.innerText = "All input fields are required!";
         return;
     }
     errorText.innerText = "";
 
+    festival.addMovies(movie);
+    var index = festival.listOfAllMovies.length - 1;
+
+
     var li = document.createElement("li")
     li.innerText = movie.getData();
     movieParagraph.appendChild(li);
 
     var option = document.createElement("option");
-    option.innerHTML = movie.getData();
+    option.innerText = movie.getData();
     option.setAttribute("value", index);
     movieSelect.appendChild(option);
     
@@ -56,15 +59,26 @@ function createProgram() {
     
     var inputDate = new Date(date.value);
    
-    if (inputDate.getTime() < Date.now()) {
+    if (inputDate.getTime() <= Date.now()) {
         errorDate.innerText = "Invalid date input!";
         return;
     }
+    var hasProgramWithSameDate = festival.listOfAllPrograms.some(function(program) {
+        return inputDate.getTime() === program.date.getTime();
+    })
+
+    if (hasProgramWithSameDate) {
+        errorDate.innerText = "Program with same date already exists";
+        return;
+    }
+
     errorDate.innerText = "";
 
     var program = new Program(inputDate);
     festival.addPrograms(program);
     var index = festival.listOfAllPrograms.length - 1;
+
+
 
     var li = document.createElement("li")
     li.innerText = program.getData();
