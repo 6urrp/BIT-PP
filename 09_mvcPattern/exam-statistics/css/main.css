@@ -110,4 +110,52 @@ button:hover {
 
 /**************** LIST OF PASSED/FAILED **********************/
 
+.student-list {
+    width: 100%;
+    text-align: center;
+}
+
+h3 {
+    text-align: left;
+    margin-top: 40px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgb(196, 193, 196);
+}
+
+.passed-title {
+    color: rgb(109,109,109);
+    font-weight: normal;
+}
+
+.failed-title {
+    color: rgb(252,82,79);
+    font-weight: normal;
+}
+
+.color-passed {
+    color:rgb(51,184,180);
+}
+
+.color-failed {
+    color: rgb(252,82,79);
+}
+
+.passed-container, .failed-container {
+    width: fit-content;
+    display: inline-block;
+    border-bottom: 1px solid rgb(196, 193, 196);
+    margin-right: 50px;
+}
+
+.passed-students li, .failed-students li {
+    list-style: none;
+    display: inline-block;
+    padding: 9px;
+    
+}
+
+.name-li {
+    width: 300px;
+    text-align: left;
+}
 
