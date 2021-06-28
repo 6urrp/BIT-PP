@@ -10,9 +10,9 @@ Exam.prototype.getExamInfo = function () {
     return this.subject.subjectName + " " + this.student.studentName + " " + this.student.studentSurname;
 }
 Exam.prototype.hasPassed = function () {
-    if (this.grade < 5) {
-        return "The student has passed the exam!";
+    if (this.grade > 5) {
+        return true;
     } else {
-        return "The student has failed the exam!";
+        return false;
     }
 }
