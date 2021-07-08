@@ -52,46 +52,47 @@
             this.totalNumberOfMovies++;
         }
         getData () {
-            let result = "";
             let lengthOfMovies = 0;
             let movieData = "";
             this.listOfMovies.forEach(function (el) {
                 lengthOfMovies += el.length;
-                movieData += `  ${el.getData()}
+                movieData += 
+                `   ${el.getData()}
                 `;
             })
-            return result += `${this.date.getDay()}.${this.date.getMonth()+1}.${this.date.getFullYear()}, program duration ${lengthOfMovies}
+            return `${this.date.getDay()}.${this.date.getMonth()+1}.${this.date.getFullYear()}, program duration ${lengthOfMovies}
             ${movieData}`;
-            // return result += this.date.getDay() + "." + (this.date.getMonth()+1) +  "." + this.date.getFullYear()  + ", program duration " +  + "\n" + movieData;
         }
     }
 
-    function Festival (name) {
-        this.name = name;
-        this.listOfPrograms = [];
-        this.numberOfAllMovies = 0;
-        this.addProgram = function (program) {
+    class Festival {
+        constructor (name) {
+            this.name = name;
+            this.listOfPrograms = [];
+            this.numberOfAllMovies = 0;
+        };
+        addProgram (program) {
             if (!(program instanceof Program)) {
                 throw new Error ("Invalid input!")
-            }
+            };
             this.listOfPrograms.push(program);
             this.numberOfAllMovies++;
-        }
-        this.getData = function () {
-            var result = "";
-            var allPrograms = "";
+        };
+        getData() {
+            let allPrograms = "";
             this.listOfPrograms.forEach(function (el) {
-                allPrograms += "\t" + el.getData();
-            })
-            return result += this.name + " has " + this.numberOfAllMovies + " movie titles" + "\n" + allPrograms;
-        }
-    }
+                allPrograms += `${el.getData()}`;
+            });
+            return `${this.name} has ${this.numberOfAllMovies} movie titles
+            ${allPrograms}`;
+        };
+    };
 
 
     //object factory
 
-    function createMovie (title, genre, length) {
-        var movieGenre = new Genre(genre)
+   function createMovie (title, genre, length) {
+        let movieGenre = new Genre(genre)
         return new Movie (title, movieGenre, length);
     }
 
@@ -106,36 +107,26 @@
     //testing
 
     try {
-        let genre = new Genre ("horror");
-        let movie = new Movie("Wrong turn", genre, 120)
-        let program = new Program("Oct 22 2021")
-        program.addMovie(movie);
-        
-        console.log(program.getData())
+        let festival = new Festival ("The Cannes Festival");
 
+        let program1 = new Program("July 14 2021");
+        let program2 = new Program("July 16 2022");
 
+        let movie1 = createMovie("Pulp Fiction", "Crime", 154);
+        let movie2 = createMovie("The Shawdhank Redemption", "Drama", 142);
+        let movie3 = createMovie("Parasite", "Thriller", 132);
+        let movie4 = createMovie("Memento", "Mystery", 113);
 
+        program1.addMovie(movie1);
+        program1.addMovie(movie4);
 
-        // var festival = new Festival ("The Cannes Festival");
+        program2.addMovie(movie2);
+        program2.addMovie(movie3);
 
-        // var program1 = new Program("July 14 2021");
-        // var program2 = new Program("July 16 2022");
+        festival.addProgram(program1);
+        festival.addProgram(program2);
 
-        // var movie1 = createMovie("Pulp Fiction", "Crime", 154);
-        // var movie2 = createMovie("The Shawdhank Redemption", "Drama", 142);
-        // var movie3 = createMovie("Parasite", "Thriller", 132);
-        // var movie4 = createMovie("Memento", "Mystery", 113);
-
-        // program1.addMovie(movie1);
-        // program1.addMovie(movie4);
-
-        // program2.addMovie(movie2);
-        // program2.addMovie(movie3);
-
-        // festival.addProgram(program1);
-        // festival.addProgram(program2);
-
-        // console.log(festival)
+        console.log(program2.getData())
     } catch (err) {
         console.log(err.message)
     }
