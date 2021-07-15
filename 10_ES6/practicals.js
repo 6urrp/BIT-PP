@@ -98,3 +98,35 @@ c. Write a function that check if there is a person older than 40.
 d. Write a function that checks if all persons are older than 20.*/
 
 
+
+
+/*10. Write a function that checks if the given array is an array of positive integer values.
+Input: [3, 11, 9, 5, 6]
+Output: yes
+Input: [3, -12, 4, 11]
+Output: no*/
+
+const isPositive = arr => arr.every(el => el > 0);
+const isPositiveArray = isPositive([3, 11, 9, 5, 6]);
+console.log(isPositiveArray);
+
+
+
+/*11. Write a function that calculates the product of the elements of the array.
+Input: [2, 8, 3]
+Output: 48*/
+
+const product = arr => arr.reduce((a, b) => a * b);
+const arrayProduct = product([2, 8, 3]);
+console.log(arrayProduct);
+
+
+
+/*12. Write a function that calculates the maximum of the given array.
+Input: [2, 7, 3, 8, 5.4]
+Output: 8*/
+
+const calcMax = arr => arr.reduce((a, b) => Math.max(a, b));
+const max = calcMax([2, 7, 3, 8, 5.4]);
+console.log(max);
+
