@@ -92,12 +92,39 @@ console.log(indexes);
 
 /* 9.
 a. Create an array of persons. A person should be an object with name and age properties.
-Experiment with enhanced object literals.
-b. Write a function that prints out the names of persons older than 25.
-c. Write a function that check if there is a person older than 40.
-d. Write a function that checks if all persons are older than 20.*/
+Experiment with enhanced object literals.*/
+
+let fullname = "Jack", age = 42;
+let persons = [{fullname, age}];
+fullname = "Doug", age = 28;
+persons.push({
+  fullname,
+  age
+});
+fullname = "Emily", age = 21;
+persons.push({
+  fullname,
+  age
+});
+
+//b. Write a function that prints out the names of persons older than 25.
+
+const printName = arr => arr.filter(element => element.age > 25);
+const nameOlder = printName(persons);
+console.log(nameOlder);
 
 
+//c. Write a function that check if there is a person older than 40.
+
+const olderThan40 = arr => arr.some(element => element.age > 40);
+const older = olderThan40(persons);
+console.log(older);
+
+/*d. Write a function that checks if all persons are older than 20.*/
+
+const allOlderThan20 = arr => arr.every(el => el.age > 20);
+const older20 = allOlderThan20(persons);
+console.log(older20);
 
 
 /*10. Write a function that checks if the given array is an array of positive integer values.
