@@ -38,7 +38,6 @@ function updateStatistic () {
 
 
 function updateList() {
-
     if (studentInput.value === "" || gradeInput.value === "") {
         errorText.textContent = "All fields are required!"
         return;
@@ -76,4 +75,5 @@ function updateList() {
     studentInput.value = "";
     gradeInput.value = "";
     subjectInput.value = 0;
+    errorText.textContent = "";
 }
