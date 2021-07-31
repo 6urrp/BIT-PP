@@ -1,7 +1,7 @@
 function Report () {
     this.date = new Date();
     this.listOfExams = [];
-    this.listOfSubjects = ["JavaScript", "Web", "Python"];
+    this.listOfSubjects = ["JavaScript", "PHP", "Web"];
 }
 Report.prototype.addExam = function (exam) {
     this.listOfExams.push(exam);

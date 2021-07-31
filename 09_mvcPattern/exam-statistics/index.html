@@ -12,7 +12,7 @@
         <div class="cover">
             <div></div>
             <div></div>
-            <h1>Exam statistic June</h1>
+            <h1>Exam statistic - <span class="month"></span></h1>
             <p id="total">Total students: 0</p>
 
             <ul class="passed-list">
@@ -31,9 +31,10 @@
         <div class="form-container">
             <form action="get">
                 <select name="" id="subject">
-                    <option value="">Java Script</option>
-                    <option value="">PHP</option>
-                    <option value="">Python</option>
+                    <option value="0">-</option>
+                    <option value="1">JavaScript</option>
+                    <option value="2">PHP</option>
+                    <option value="3">Web</option>
                 </select>
 
                 <label for="student-name"></label>
@@ -44,22 +45,23 @@
 
                 <button type="submit" id="add-button">ADD</button>
             </form>
+            <p class="error"></p>
         </div>
 
         <div class="student-list">
             <div class="passed-container">
                 <h3 class="passed-title">PASSED</h3>
                 <ul class="passed-students">
-                    <li class="name-li">s</li>
-                    <li class="grade-li color-passed">s</li>
+                    <!-- <li class="name-li">s</li>
+                    <li class="grade-li color-passed">s</li> -->
                 </ul>
             </div>
 
             <div class="failed-container">
                 <h3 class="failed-title">FAILED</h3>
                 <ul class="failed-students">
-                    <li class="name-li">s</li>
-                    <li class="grade-li color-failed">s</li>
+                    <!-- <li class="name-li">s</li>
+                    <li class="grade-li color-failed">s</li> -->
                 </ul>
             </div>
         </div>

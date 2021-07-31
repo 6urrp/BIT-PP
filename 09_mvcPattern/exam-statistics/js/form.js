@@ -5,11 +5,16 @@ var numbOfPassed = document.querySelector(".number-of-passed");
 var numbOfFailed = document.querySelector(".number-of-failed");
 var percentage = document.querySelector(".percentage-of-failed");
 var total = document.getElementById("total");
-console.log(total)
+var passedList = document.querySelector(".passed-students")
+var failedList = document.querySelector(".failed-students")
+var errorText = document.querySelector(".error");
+console.log(passedList)
+
 var report = new Report();
 
 function collectAllData () {
-    if (studentInput.value === "" || gradeInput.value === "") {
+    if (studentInput.value === "" || gradeInput.value === "" || subjectInput.options[subjectInput.selectedIndex].text === "-") {
+        errorText.textContent = "All fields are required!"
         return;
     }
     var subjectValue = subjectInput.options[subjectInput.selectedIndex].text;
@@ -21,8 +26,7 @@ function collectAllData () {
     var exam = new Exam(subject, student, gradeValue);
     report.addExam(exam);
 
-    studentInput.value = "";
-    gradeInput.value = "";
+    
 }
 
 function updateStatistic () {
@@ -30,12 +34,46 @@ function updateStatistic () {
     numbOfFailed.textContent = report.getNumberOfFailed();
     percentage.textContent = report.getPercentageOfFailed();
     total.innerHTML = "Total students: " + report.getNumberOfAllStudents();
-
-    studentInput.value = "";
-    gradeInput.value = "";
 }
 
 
 function updateList() {
 
+    if (studentInput.value === "" || gradeInput.value === "") {
+        errorText.textContent = "All fields are required!"
+        return;
+    }
+    
+    var subjectValue = subjectInput.options[subjectInput.selectedIndex].text;
+    var studentValue = studentInput.value;
+    var gradeValue = gradeInput.value;
+
+    if (subjectValue === "JavaScript") {
+        subjectValue = "JS";
+    }
+
+    if (subjectValue === "-") {
+        return;
+    }
+
+    var nameLi = document.createElement("li");
+    var gradeLi = document.createElement("span");
+    gradeLi.innerText = gradeValue;
+    nameLi.innerText = subjectValue + " - " + studentValue;
+
+    if (gradeValue > 5) {
+        nameLi.className = "name-li";
+        gradeLi.className = "grade-li color-passed";
+        passedList.append(nameLi);
+        nameLi.append(gradeLi)
+    } else {
+        nameLi.className = "name-li";
+        gradeLi.className = "grade-li color-passed";
+        failedList.append(nameLi);
+        nameLi.append(gradeLi)
+    }
+
+    studentInput.value = "";
+    gradeInput.value = "";
+    subjectInput.value = 0;
 }
