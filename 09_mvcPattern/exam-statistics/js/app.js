@@ -1,10 +1,10 @@
 var button = document.querySelector("#add-button");
 
-var report = new Report()
+var handler = function(e) {
+    collectAllData();
+    updateStatistic();
 
-function pressButton() {
-    collectAllData(report);
-    updateStatistic(report);
+    e.preventDefault();
 }
 
-//button.addEventListener("click", pressButton)
+button.addEventListener("click", handler)

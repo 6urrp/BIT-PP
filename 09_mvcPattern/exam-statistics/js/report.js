@@ -27,13 +27,16 @@ Report.prototype.getNumberOfFailed = function () {
     })
     return counter;
 }
+Report.prototype.getNumberOfAllStudents = function() {
+    return this.getNumberOfFailed() + this.getNumberOfPassed();
+}
 Report.prototype.getPercentageOfFailed = function () {
-    var passed = this.getNumberOfPassed();
+    var all = this.getNumberOfAllStudents();
     var failed = this.getNumberOfFailed();
-    var percentage = (passed + failed) / failed;
-    if (failed !== 0) {
-        return percentage;
+    var percentage = (failed / all * 100).toFixed(1);
+    if (failed === 0 ) {
+        return "";
+    } else {
+        return percentage += " %"; 
     }
-    return;
-    
 }
